@@ -48,7 +48,7 @@ const productList = [
 
 const ProductsSection = () => {
     return(
-        <section id="product-section" className="container mx-auto mt-30">
+        <section id="product-section" className="container mx-auto mt-30 mb-52">
             <h2 className="font-bold italic text-4xl text-center mb-10">
                 <span className="text-primary"> OUR </span> PRODUCTS
             </h2>
