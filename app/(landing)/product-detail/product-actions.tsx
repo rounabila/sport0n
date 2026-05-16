@@ -3,9 +3,14 @@
 import { FiArrowRight, FiShoppingBag, FiChevronUp, FiChevronDown } from "react-icons/fi";
 import Button from "../components/UI/button";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const ProductActions = () => {
+    const {push} = useRouter();
     const [qty, setQty] = useState(1);
+
+    const Checkout = () => {
+    }
 
   return (
     <div className="flex gap-4 h-12">
@@ -25,7 +30,9 @@ const ProductActions = () => {
             </div>
         </div>
       <Button className="px-10 flex-1 flex items-center justify-center gap-2"><FiShoppingBag size={20} /> Add to Cart </Button>
-    <Button variant="dark" className="px-10 flex-1 flex items-center justify-center gap-2"> Checkout Now <FiArrowRight size={24} /> </Button>
+    <Button variant="dark" className="px-10 flex-1 flex items-center justify-center gap-2" onClick={() => push('/checkout')}>
+        Checkout Now <FiArrowRight size={24} />
+    </Button>
     </div>
   );
 };

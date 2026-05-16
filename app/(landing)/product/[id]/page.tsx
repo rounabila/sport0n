@@ -1,5 +1,7 @@
 import Image from "next/image";
 import ProductActions from "../../product-detail/product-actions";
+import { cartList } from "../../components/UI/cart-popup";
+import { productList } from "../../components/home/products";
 
 const ProductDetail =() => {
     return (
@@ -22,7 +24,7 @@ const ProductDetail =() => {
             </div>
                 <div className="text-primary text-[32px] font-semibold mb-12">
                     {Intl.NumberFormat("id-ID", 
-                        { style: "currency", currency: "IDR" }).format(458000)}
+                        { style: "currency", currency: "IDR" }).format(productList[3].price)}
                 </div>
                 <ProductActions/>
         </div>

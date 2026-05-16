@@ -22,3 +22,15 @@ html{
 *{
   @apply font-poppins;
 }
+
+/* INPUT GROUP */
+.input-group {
+  @apply mb-5;
+}
+.input-group label {
+  @apply mb-3 text-xs block;
+}
+.input-group input, 
+.input-group textarea {
+  @apply px-3 py-2.5 bg-gray-100 w-full focus:border focus:border-gray-400;
+}

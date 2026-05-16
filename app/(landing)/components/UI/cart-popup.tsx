@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Button from "./button";
 import { FiArrowRight, FiTrash2 } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
-const cartList = [
-    { name: "Sport0n Product 1",
+export const cartList = [
+   { name: "Sport0n Product 1",
         category: "Running",
         price: 250000,
         qty: 2,
@@ -24,6 +27,10 @@ const cartList = [
 ]
 
 const CartPopup = () => {
+    const{push} = useRouter();
+    
+    const totalPrice = cartList.reduce((sum, item) => sum + (item.qty * item.price), 0);
+
     return (
         <div className=" absolute top-12 right-0 bg-white shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">
             <div className="p-4 border-b border-gray-200 font-bold text-center"> Shopping Cart </div>
@@ -32,7 +39,7 @@ const CartPopup = () => {
                         <div className="bg-primary-light aspect-square flex justify-center items-center w-16">
                             <Image src={`/images/products/${item.imgUrl}`} alt={item.name} width={60} height={60} className="aspect-square object-contain" />
                         </div>
-                        <div className="self-center">
+                        <div className="flex-1">
                             <div className="text-sm font-medium">{item.name}</div>
                             <div className="flex gap-3 font-medium text-xs mt-1">
                                 <div>{item.qty} x Rp {item.price.toLocaleString("id-ID")}</div>
@@ -40,17 +47,17 @@ const CartPopup = () => {
                             </div>
                         </div> 
                             <Button size="small" variant="ghost"> 
-                                <FiTrash2 className="w-4 h-4m-1/2 text-black"/>
+                                <FiTrash2 className="w-4 h-4 m-1/2 text-black"/>
                             </Button>
                     </div>
                 ))}
                 <div className="border-t border-gray-200 p-3 flex justify-between">
                     <span className="font-semibold text-sm"> Total </span>
                     <span className="text-primary text-sm font-medium">
-                        Rp {cartList.reduce((sum, item) => sum + (item.qty * item.price), 0).toLocaleString("id-ID")}
+                        Rp {totalPrice.toLocaleString("id-ID")}
                     </span>
                 </div>
-                <Button variant="dark" size="small" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-2 rounded-md">
+                <Button variant="dark" size="small" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-5 rounded-md" onClick={() => push('/checkout')}>
                     Checkout Now <FiArrowRight/>
                 </Button>
             </div>

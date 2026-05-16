@@ -3,45 +3,45 @@ import Link from "next/link";
 import Button from "../UI/button";
 import { FiPlus } from "react-icons/fi";
 
-const productList = [
+export const productList = [
     { name: "Sport0n Product 1",
         category: "Running",
-        price: 250000,
+        price: 110000,
         imgUrl:"product-1.png",
     },
     { name: "Sport0n Product 2",
         category: "Running",
-        price: 250000,
+        price: 120000,
         imgUrl:"product-2.png",
     },
     { name: "Sport0n Product 3",
         category: "Running",
-        price: 250000,
+        price: 130000,
         imgUrl:"product-3.png",
     },
     { name: "Sport0n Product 4",
         category: "Running",
-        price: 250000,
+        price: 140000,
         imgUrl:"product-4.png",
     },
     { name: "Sport0n Product 5",
         category: "Running",
-        price: 250000,
+        price: 150000,
         imgUrl:"product-5.png",
     },
     { name: "Sport0n Product 6",
         category: "Running",
-        price: 250000,
+        price: 160000,
         imgUrl:"product-6.png",
     },
     { name: "Sport0n Product 7",
         category: "Running",
-        price: 250000,
+        price: 170000,
         imgUrl:"product-7.png",
     },
     { name: "Sport0n Product 8",
         category: "Running",
-        price: 250000,
+        price: 180000,
         imgUrl:"product-8.png",
     },
 ]
@@ -55,7 +55,8 @@ const ProductsSection = () => {
             <div className="grid grid-cols-4 gap-5">
                 {
                     productList.map((product, index) => (
-                        <Link href="#" key={index} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
+                        <Link href={`/products/${product.name}`} 
+                        key={index} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
                             <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
                                 <Image src={`/images/products/${product.imgUrl}`}
                                         alt={product.name}
