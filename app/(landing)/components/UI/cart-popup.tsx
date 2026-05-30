@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Button from "./button";
 import { FiArrowRight, FiTrash2 } from "react-icons/fi";
@@ -31,6 +29,10 @@ const CartPopup = () => {
     
     const totalPrice = cartList.reduce((sum, item) => sum + (item.qty * item.price), 0);
 
+    const handleCheckout = () => {
+        push('/checkout');
+    }
+
     return (
         <div className=" absolute top-12 right-0 bg-white shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">
             <div className="p-4 border-b border-gray-200 font-bold text-center"> Shopping Cart </div>
@@ -57,7 +59,7 @@ const CartPopup = () => {
                         Rp {totalPrice.toLocaleString("id-ID")}
                     </span>
                 </div>
-                <Button variant="dark" size="small" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-5 rounded-md" onClick={() => push('/checkout')}>
+                <Button variant="dark" size="small" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-5 rounded-md" onClick={handleCheckout}>
                     Checkout Now <FiArrowRight/>
                 </Button>
             </div>

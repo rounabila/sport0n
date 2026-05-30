@@ -4,13 +4,29 @@ import { FiArrowRight, FiShoppingBag, FiChevronUp, FiChevronDown } from "react-i
 import Button from "../components/UI/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { cartList } from "../components/UI/cart-popup";
 
-const ProductActions = () => {
+const ProductActions = ({ product }: { product: any }) => {
     const {push} = useRouter();
     const [qty, setQty] = useState(1);
 
-    const Checkout = () => {
+    const handleAddToCart = () => {
+        if (!product) return;
+       
+    const existingProduct= cartList.find(item => item.name === product.name);
+    if (existingProduct) {
+        existingProduct.qty += qty;
+    } else {
+        cartList.push({ ...product, qty });
     }
+    alert(`${product.name} added to cart!`);
+};
+
+    const Checkout = () => {
+   if (!product) return;
+   handleAddToCart();
+   push('/checkout');
+};
 
   return (
     <div className="flex gap-4 h-12">

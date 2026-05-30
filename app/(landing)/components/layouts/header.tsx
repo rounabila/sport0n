@@ -12,12 +12,14 @@ function Header() {
     return (
         <header>
             <div className="flex justify-between gap-10 container mx-auto py-5">
-                <Image
-                    src="/images/logo.svg"
-                    alt="sporton logo"
-                    width={127}
-                    height={30}
-                />
+                    <Link href="/">
+                        <Image
+                            src="/images/logo.svg"
+                            alt="sporton logo"
+                            width={127}
+                            height={30}
+                        />
+                    </Link>
                 <nav className="flex gap-44">
                     <Link href="#" className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-1 after:w-1/2 after:absolute after:left-1/2 after:-translate-x-1/2 after:translate-y-1">
                         Home
