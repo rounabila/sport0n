@@ -6,7 +6,8 @@ import Image from "next/image";
 
 const HeroSection = () => {
     return (
-        <section id="hero-section" className="container mx-auto h-screen flex">
+        <section className="relative overflow-hidden">
+        <div id="hero-section" className="container mx-auto h-screen flex">
         <div className="relative self-center">
              <Image src="/images/img-basketball.svg" 
               width={423} height={423}
@@ -35,7 +36,7 @@ const HeroSection = () => {
       <Image src="/images/img-ornament-hero.svg" 
     width={400} height={400}
     alt="image sporton"
-    className="absolute -right-[230px] top-1/2 -translate-y-1/2" />
-</section>
+    className="absolute -right-[230px] top-1/2 -translate-y-1/2 z-0" />
+</div></section>
 )}
 export default HeroSection;

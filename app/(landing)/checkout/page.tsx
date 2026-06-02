@@ -1,14 +1,36 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import CartItems from "../components/checkout/cart-items";
 import OrderInformation from "../components/checkout/order-information";
+import { CustomerInfo, useCartStore } from "@/app/hooks/use-cart-store";
 
 const Checkout = () => {
+    const { push } = useRouter();
+    const { customerInfo, setCustomerInfo } = useCartStore();
+    const [formData, setFormData] = useState <CustomerInfo>({
+            customerName: "",
+            customerContact: null,
+            customerAddress: "",
+        })
+
+    const handlePayment = () => {
+        if (!formData.customerName || !formData.customerContact || !formData.customerAddress) {
+            alert("Please fill in all the fields");
+            return;
+        }
+        setCustomerInfo(formData);
+        push("/payment");
+    }
+
     return (
         <main className="bg-gray-100 min-h-[80vh]">
             <div className="max-w-5xl mx-auto py-20">
-                <h1 className="text-4xl font-bold text-center mb-11">Checkout Now</h1>
+                <h1 className="text-4xl font-bold text-center mb-11">Checkout</h1>
              <div className="grid grid-cols-2 gap-14">
-                <OrderInformation/>
-                <CartItems/>
+                <OrderInformation formData={formData} setFormData={setFormData}/>
+                <CartItems handlePayment={handlePayment}/>
              </div>
             </div>
         </main>
@@ -16,3 +38,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
