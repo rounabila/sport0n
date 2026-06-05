@@ -1,7 +1,7 @@
 "use client";
 
 import { FiFastForward } from "react-icons/fi";
-import Button from "../UI/button";
+import Button from "../ui/button";
 import Image from "next/image";
 
 const HeroSection = () => {

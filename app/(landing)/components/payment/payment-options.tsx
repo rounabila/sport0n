@@ -1,5 +1,5 @@
 import { FiCreditCard } from "react-icons/fi";
-import CardWithHeader from "../UI/card-with-header";
+import CardWithHeader from "../ui/card-with-header";
 import { getAllBanks } from "@/app/services/bank.services";
 
 const paymentList = [{

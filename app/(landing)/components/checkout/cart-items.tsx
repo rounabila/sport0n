@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../UI/button";
+import Button from "../ui/button";
 import { FiCreditCard, FiTrash2 } from "react-icons/fi";
-import CardWithHeader from "../UI/card-with-header";
+import CardWithHeader from "../ui/card-with-header";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import { getImageUrl } from "@/app/lib/api";

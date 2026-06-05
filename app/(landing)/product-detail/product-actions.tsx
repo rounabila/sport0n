@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight, FiShoppingBag, FiChevronUp, FiChevronDown } from "react-icons/fi";
-import Button from "../components/UI/button";
+import Button from "../components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";
@@ -21,6 +21,7 @@ const ProductActions = ({stock, product}: TProductActionsProps) => {
        additem(product, qty)
     };
     const handleCheckout = () => {
+        additem(product, qty);
         push("/checkout");
     };
 
@@ -43,7 +44,7 @@ const ProductActions = ({stock, product}: TProductActionsProps) => {
         </div>
     <Button className="px-10 flex-1 flex items-center justify-center gap-2" onClick={handleAddToCart}>
         <FiShoppingBag size={20} /> Add to Cart </Button>
-    <Button variant="dark" className="px-10 flex items-center justify-center gap-2" onClick={() => push('/checkout')}>
+    <Button variant="dark" className="px-10 flex items-center justify-center gap-2" onClick={handleCheckout}>   
         Checkout Now <FiArrowRight size={24} />
     </Button>
     </div>

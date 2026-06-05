@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../UI/button";
+import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
 import { Product } from "@/app/types";
 import { getImageUrl } from "@/app/lib/api";

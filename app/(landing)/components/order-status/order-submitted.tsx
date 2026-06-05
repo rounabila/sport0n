@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../UI/button";
+import Button from "../ui/button";
 import { FiRefreshCw } from "react-icons/fi";
 
 const OrderSubmitted = () => {

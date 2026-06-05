@@ -1,6 +1,6 @@
 "use client";
 
-import CardWithHeader from "../UI/card-with-header";
+import CardWithHeader from "../ui/card-with-header";
 import { CustomerInfo } from "@/app/hooks/use-cart-store";
 
 type TOrderInformation = {
@@ -30,7 +30,7 @@ const OrderInformation = ({formData, setFormData}: TOrderInformation) => {
                         id="customerContact" 
                         name="customerContact"
                         required
-                        value={formData.customerContact ?? ""} onChange={handleInputChange}/>
+                        value={formData.customerContact as number} onChange={handleInputChange}/>
                     </div>
                     <div className="input-group">
                         <label htmlFor="customerAddress">Shipping Address</label>

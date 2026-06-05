@@ -1,10 +1,10 @@
 "use client";
 
 import { FiCheckCircle, FiCreditCard } from "react-icons/fi";
-import Button from "../UI/button";
-import CardWithHeader from "../UI/card-with-header";
-import { cartList } from "../UI/cart-popup";
-import FileUpload from "../UI/file-upload";
+import Button from "../ui/button";
+import CardWithHeader from "../ui/card-with-header";
+import { cartList } from "../ui/cart-popup";
+import FileUpload from "../ui/file-upload";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCartStore } from "@/app/hooks/use-cart-store";
