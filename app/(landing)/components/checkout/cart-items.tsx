@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../ui/button";
+import Button from "../UI/button";
 import { FiCreditCard, FiTrash2 } from "react-icons/fi";
-import CardWithHeader from "../ui/card-with-header";
+import CardWithHeader from "../UI/card-with-header";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import { getImageUrl } from "@/app/lib/api";
+import priceFormatter from "@/app/utils/price-formatter";
 
 type TCartItems = {
    handlePayment: () => void;
@@ -15,14 +16,13 @@ type TCartItems = {
 const CartItems = ({handlePayment}: TCartItems) => {
   const {items, removeItem} = useCartStore();
   const { push } = useRouter();
-
-  const totalPrice = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
+  const totalPrice = items.reduce((sum, item) => sum + item.qty * item.price, 0);
 
     return (
         <CardWithHeader title="Cart Items">
             <div className="overflow-auto max-h-[300px] flex flex-col h-full">
-            {items.map((item) => (
-                        <div key={item._id} className="border-bborder-gray-200 p-4 gap-3 flex">
+                        {items.map((item) => (
+                        <div key={item._id} className="border-b border-gray-200 p-4 gap-3 flex">
                             <div className="bg-primary-light aspect-square flex justify-center items-center w-16">
                                 <Image src={getImageUrl(item.imageUrl)} 
                                 alt={item.name} 
@@ -42,10 +42,10 @@ const CartItems = ({handlePayment}: TCartItems) => {
                     </div>
                 ))}
                 </div>
-                <><div className="border-tborder-gray-200 p-3 flex justify-between">
+                <><div className="border-t border-gray-200 p-3 flex justify-between">
         <span className="font-semibold text-sm"> Total </span>
         <span className="text-primary text-sm font-medium">
-            Rp {totalPrice.toLocaleString("id-ID")}
+            {priceFormatter(totalPrice)}
         </span>
     </div><Button variant="dark" size="normal" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-5 rounded-md " onClick={handlePayment}>
              <FiCreditCard />Proceed to Payment

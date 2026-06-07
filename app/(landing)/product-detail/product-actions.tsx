@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight, FiShoppingBag, FiChevronUp, FiChevronDown } from "react-icons/fi";
-import Button from "../components/ui/button";
+import Button from "../components/UI/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";

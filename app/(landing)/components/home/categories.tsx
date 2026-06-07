@@ -4,27 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 
-const categoryList = [
-    { name: "Running",
-        ImgUrl: "category-running.png",
-    },
-    { name: "Tennis",
-        ImgUrl: "category-tennis.png",
-    },
-    { name: "Basketball",
-        ImgUrl: "category-basketball.png",
-    },
-    { name: "Football",
-        ImgUrl: "category-football.png",
-    },
-    { name: "Badminton",
-        ImgUrl: "category-badminton.png",
-    },
-    { name: "Swimming",
-        ImgUrl: "category-swimming.png",
-    },
-]
-
 type TCategoriesProps = {
     categories: Category[];
 }
@@ -48,8 +27,7 @@ return (
             src={getImageUrl(category.imageUrl)}
             alt={category.name}
             width={86} height={86}
-            className="mb-[10px]"
-        />
+            className="mb-[10px]"/>
      </div>
         <div className="text-primary font-medium text-xl text-center">
             {category.name}

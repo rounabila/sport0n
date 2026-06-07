@@ -1,21 +1,22 @@
 "use client";
 
 import { FiCheckCircle, FiCreditCard } from "react-icons/fi";
-import Button from "../ui/button";
-import CardWithHeader from "../ui/card-with-header";
-import { cartList } from "../ui/cart-popup";
-import FileUpload from "../ui/file-upload";
+import Button from "../UI/button";
+import CardWithHeader from "../UI/card-with-header";
+import FileUpload from "../UI/file-upload";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCartStore } from "@/app/hooks/use-cart-store";
-import { transactionCheckout } from "@/app/services/transaction.services";
+import { transactionCheckout } from "@/app/services/transaction.service";
+import priceFormatter from "@/app/utils/price-formatter";
 
 const PaymentStep = () => {
     const {push} = useRouter();
     const {items, customerInfo, reset} = useCartStore();
     const [file, setFile] = useState<File | null>(null);
+    const total = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
 
-    const UploadAndConfirmPayment = () => {
+    const UploadAndConfirmPayment =() => {
         push("/order-status/12345");
     }
 
@@ -51,12 +52,10 @@ const PaymentStep = () => {
         }
     }
 
-    const totalPrice = (Array.isArray(items) ? items : []).reduce((sum, item) => sum + (item.qty * item.price), 0);
-
     return (
         <CardWithHeader title="Payment Steps">
          <div> <ol className="px-8 text-justify list-decimal text-xs pt-2 flex flex-col gap-1.5">
-                <li> Transfer the total amount of <b>Rp { totalPrice.toLocaleString("id-ID") }</b> to your preferred bank account listed under Payment Options. </li>
+                <li> Transfer the total amount of <b>Rp {priceFormatter(total)}</b> to your preferred bank account listed under Payment Options. </li>
                 <li> After completing the transfer, <b>keep the payment receipt </b> or a screenshot of the transfer confirmation. This will be needed for the next step </li>
                 <li> Upload the payment receipt/screenshot using the <b>'Upload Receipt & Confirm'</b> button below to validate your transaction.
                 </li>
@@ -66,7 +65,7 @@ const PaymentStep = () => {
 <><div className="border-t border-gray-200 p-3 flex justify-between">
         <span className="font-semibold text-sm"> Total </span>
         <span className="text-primary text-sm font-medium">
-            Rp { totalPrice.toLocaleString("id-ID") }
+            {priceFormatter(total)}
         </span>
     </div><Button variant="dark" size="normal" className="m-2 w-[calc(100%-1rem)] flex items-center justify-center gap-5 rounded-md" onClick={handleConfirmPayment}>
             <FiCheckCircle /> Upload Receipt & Confirm
